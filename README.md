@@ -21,7 +21,7 @@ or split tracks based on information extracted from the video description
 ### track
 
 	%t	track title ('.*')
-	%o	track offset ('(\\d{1,2}:)?\\d{1,2}:\\d{1,2}')
+	%o	track offset ('(\d{1,2}:)?\d{1,2}:\d{1,2}')
 
 ### title
 
@@ -30,6 +30,6 @@ or split tracks based on information extracted from the video description
 
  format strings can be intermixed with regex, eg.
 
-	youtube-dl-album.sh -f \"\d+ %t %o\" ...
+	youtube-dl-album.sh -f "\d+ %t %o" ...
 
  will filter track numbers out of the track title string
