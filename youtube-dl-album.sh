@@ -69,7 +69,7 @@ get_desc_file () {
 
 # get the album file name from youtube-dl output
 get_album_file () {
-	printf "%s" "$1" | sed -n "s/\[ffmpeg] Destination: //p"
+	printf "%s" "$1" | sed -n "s/\[\(ffmpeg\|download\)\] Destination: //p" | tail -n1
 }
 
 # transform track format argument into regex pattern
