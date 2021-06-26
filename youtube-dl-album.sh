@@ -107,6 +107,8 @@ scan_title () {
 
 unpack_time () {
 	eval "$2=${1%%:*} $3=${1##*:}"
+	# Remove leading zero, so the values are not interpreted as octal numbers
+	eval "$2=\${$2#0} $3=\${$3#0}"
 }
 
 # There is a small chance the album runs longer than one hour or is
