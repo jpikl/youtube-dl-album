@@ -162,7 +162,7 @@ diff_time () {
 	min_diff=$((min2 - min1))
 	sec_diff=$((sec2 - sec1))
 
-	if [ $sec_diff -lt 1 ]
+	if [ $sec_diff -lt 0 ]
 	then
 		min_diff=$((min_diff - 1))
 		sec_diff=$((sec_diff + 60))
