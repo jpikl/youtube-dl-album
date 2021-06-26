@@ -72,6 +72,11 @@ get_album_file () {
 	printf "%s" "$1" | sed -n "s/\[\(ffmpeg\|download\)\] Destination: //p" | tail -n1
 }
 
+# get the album file name from youtube-dl output (case when the album was already downloaded)
+get_album_file_downloaded () {
+	printf "%s" "$1" | sed -n "s/\[\(ffmpeg\|download\)\] \(.*\) has already been downloaded/\2/p" | tail -n1
+}
+
 # transform track format argument into regex pattern
 build_track_pattern () {
 
@@ -317,6 +322,11 @@ main () {
 	fi
 
 	file="$(get_album_file "$output")"
+
+	if [ ! "$file" ]
+	then
+		file="$(get_album_file_downloaded "$output")"
+	fi
 
 	title_pattern="$(build_title_pattern "$title_format")"
 	scan_title "${file%.*}" "$title_pattern" album performer
